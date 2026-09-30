@@ -11,9 +11,9 @@ export default function TaskFilters({ filter, onFilterChange }) {
         <button
           key={option.value}
           type="button"
-          className={`rounded-lg px-3 py-2 text-sm font-semibold transition sm:px-4 ${
+          className={`cursor-pointer rounded-lg px-3 py-2 text-sm font-semibold transition sm:px-4 ${
             filter === option.value
-              ? 'bg-[#173c2e] text-white shadow-sm'
+              ? 'bg-[#36A8FF] text-white shadow-sm hover:bg-[#178fe5]'
               : 'text-[#5d6b63] hover:bg-[#eef3ed] hover:text-[#173c2e]'
           }`}
           onClick={() => onFilterChange(option.value)}

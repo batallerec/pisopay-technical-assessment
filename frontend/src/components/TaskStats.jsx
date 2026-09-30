@@ -1,9 +1,9 @@
 function Stat({ label, value, accent }) {
   return (
-    <div className="rounded-2xl border border-[#dce4da] bg-white px-5 py-4 shadow-[0_10px_30px_rgba(38,61,47,0.05)]">
+    <div className="flex min-h-40 flex-col rounded-2xl border border-[#dce4da] bg-white px-5 py-4 shadow-[0_10px_30px_rgba(38,61,47,0.05)]">
       <div className={`mb-3 h-1.5 w-10 rounded-full ${accent}`} />
-      <p className="text-sm font-medium text-[#68776d]">{label}</p>
-      <p className="mt-1 text-3xl font-semibold tracking-tight text-[#173c2e]">{value}</p>
+      <p className="min-h-10 text-sm font-medium leading-5 text-[#68776d]">{label}</p>
+      <p className="mt-auto text-3xl font-semibold tracking-tight text-[#173c2e]">{value}</p>
     </div>
   );
 }

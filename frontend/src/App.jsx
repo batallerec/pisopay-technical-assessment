@@ -56,10 +56,6 @@ export default function App() {
   }
 
   async function handleDelete(taskId) {
-    if (!window.confirm('Delete this task?')) {
-      return;
-    }
-
     setActionInProgress({ id: taskId, type: 'delete' });
     setError(null);
 
@@ -78,12 +74,15 @@ export default function App() {
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
         <header className="mb-8 flex flex-col gap-5 border-b border-[#d6dfd5] pb-7 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#e07f3f]">Simple task tracker</p>
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#36A8FF]">Simple task tracker</p>
             <h1 className="max-w-xl text-4xl font-semibold tracking-tight text-[#173c2e] sm:text-5xl">Make room for what matters.</h1>
             <p className="mt-3 max-w-lg text-base leading-7 text-[#68776d]">A clear place for today&apos;s work, one thoughtful task at a time.</p>
           </div>
           <div className="rounded-xl border border-[#d7ded5] bg-white px-4 py-3 text-sm text-[#53645a] shadow-sm">
-            <span className="mr-2 inline-block h-2 w-2 rounded-full bg-[#58a478]" />
+            <span className="relative mr-2 inline-flex h-2.5 w-2.5 items-center justify-center" aria-hidden="true">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#58a478] opacity-60" />
+              <span className="relative h-2 w-2 rounded-full bg-[#3b8058] shadow-[0_0_8px_#58a478] motion-safe:animate-[pulse_1.8s_ease-in-out_infinite]" />
+            </span>
             {loading ? 'Syncing tasks' : error ? 'Connection issue' : 'Tasks in sync'}
           </div>
         </header>
@@ -91,7 +90,7 @@ export default function App() {
         {error && (
           <div className="mb-6 flex items-center justify-between gap-4 rounded-xl border border-[#efc1b8] bg-[#fff0ed] px-4 py-3 text-sm text-[#a54235]" role="alert">
             <span>{error.message}</span>
-            <button type="button" className="font-bold underline" onClick={() => setRefreshKey((key) => key + 1)}>Retry</button>
+            <button type="button" className="cursor-pointer font-bold underline" onClick={() => setRefreshKey((key) => key + 1)}>Retry</button>
           </div>
         )}
 
@@ -120,7 +119,7 @@ export default function App() {
             )}
           </section>
 
-          <aside className="order-1 space-y-5 lg:order-2">
+          <aside className="order-1 space-y-5 lg:sticky lg:top-6 lg:order-2 lg:self-start">
             <TaskForm onTaskCreated={() => setRefreshKey((key) => key + 1)} />
             <TaskStats tasks={tasks} />
           </aside>

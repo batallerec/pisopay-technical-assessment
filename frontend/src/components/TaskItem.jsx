@@ -1,3 +1,16 @@
+import { useState } from 'react';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from './ui/alert-dialog';
+
 function formatDate(dateValue) {
   if (!dateValue) {
     return 'Date unavailable';
@@ -17,6 +30,7 @@ const priorityStyles = {
 };
 
 export default function TaskItem({ task, actionInProgress, onComplete, onDelete }) {
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const isCompleting = actionInProgress?.id === task.id && actionInProgress.type === 'complete';
   const isDeleting = actionInProgress?.id === task.id && actionInProgress.type === 'delete';
   const isBusy = Boolean(actionInProgress?.id === task.id);
@@ -48,19 +62,44 @@ export default function TaskItem({ task, actionInProgress, onComplete, onDelete 
               type="button"
               onClick={() => onComplete(task.id)}
               disabled={isBusy}
-              className="rounded-lg border border-[#a9c5b0] px-3 py-2 text-xs font-bold text-[#2d6847] transition hover:bg-[#edf6ef] disabled:cursor-not-allowed disabled:opacity-50"
+              className="cursor-pointer rounded-lg border border-[#a9c5b0] px-3 py-2 text-xs font-bold text-[#2d6847] transition hover:bg-[#edf6ef] disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isCompleting ? 'Completing...' : 'Complete'}
             </button>
           )}
-          <button
-            type="button"
-            onClick={() => onDelete(task.id)}
-            disabled={isBusy}
-            className="rounded-lg border border-[#efc1b8] px-3 py-2 text-xs font-bold text-[#b84c3d] transition hover:bg-[#fff0ed] disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {isDeleting ? 'Deleting...' : 'Delete'}
-          </button>
+          <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+            <AlertDialogTrigger asChild>
+              <button
+                type="button"
+                disabled={isBusy}
+                className="cursor-pointer rounded-lg border border-[#efc1b8] px-3 py-2 text-xs font-bold text-[#b84c3d] transition hover:bg-[#fff0ed] disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {isDeleting ? 'Deleting...' : 'Delete'}
+              </button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete this task?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This will permanently remove “{task.title}” from your task list. This action cannot be undone.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel className="cursor-pointer rounded-lg border border-[#cfd9d0] px-4 py-2 text-sm font-semibold text-[#53645a] transition hover:bg-[#eef3ed]">
+                  Cancel
+                </AlertDialogCancel>
+                <AlertDialogAction
+                  className="cursor-pointer rounded-lg bg-[#b84c3d] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#983b30] disabled:cursor-not-allowed disabled:opacity-60"
+                  onClick={() => {
+                    setDeleteDialogOpen(false);
+                    onDelete(task.id);
+                  }}
+                >
+                  Delete task
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
     </article>
