@@ -72,13 +72,13 @@ export default function App() {
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,#e4f0e1_0%,transparent_34%),#f5f7f2] text-[#17211d]">
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
-        <header className="mb-8 flex flex-col gap-5 border-b border-[#d6dfd5] pb-7 sm:flex-row sm:items-end sm:justify-between">
+        <header className="mb-6 flex flex-col gap-4 border-b border-[#d6dfd5] pb-5 lg:mb-8 lg:flex-row lg:items-end lg:justify-between lg:gap-5 lg:pb-7">
           <div>
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#36A8FF]">Simple task tracker</p>
-            <h1 className="max-w-xl text-4xl font-semibold tracking-tight text-[#173c2e] sm:text-5xl">Make room for what matters.</h1>
+            <h1 className="max-w-xl text-3xl font-semibold tracking-tight text-[#173c2e] sm:text-4xl lg:text-5xl">Make room for what matters.</h1>
             <p className="mt-3 max-w-lg text-base leading-7 text-[#68776d]">A clear place for today&apos;s work, one thoughtful task at a time.</p>
           </div>
-          <div className="rounded-xl border border-[#d7ded5] bg-white px-4 py-3 text-sm text-[#53645a] shadow-sm">
+          <div className="w-fit shrink-0 rounded-xl border border-[#d7ded5] bg-white px-4 py-3 text-sm text-[#53645a] shadow-sm">
             <span className="relative mr-2 inline-flex h-2.5 w-2.5 items-center justify-center" aria-hidden="true">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#58a478] opacity-60" />
               <span className="relative h-2 w-2 rounded-full bg-[#3b8058] shadow-[0_0_8px_#58a478] motion-safe:animate-[pulse_1.8s_ease-in-out_infinite]" />
@@ -96,7 +96,7 @@ export default function App() {
 
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
           <section className="order-2 space-y-5 lg:order-1">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <p className="text-sm font-medium text-[#718077]">Your workspace</p>
                 <h2 className="text-2xl font-semibold text-[#173c2e]">Task list</h2>
