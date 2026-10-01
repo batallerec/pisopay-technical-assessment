@@ -268,43 +268,6 @@ I made these design decisions because they keep the assessment easy to understan
 - I kept the frontend state in `App.jsx` and passed small callbacks to child components. `TaskForm`, `TaskList`, `TaskItem`, `TaskFilters`, and `TaskStats` each have one clear responsibility.
 - I used a small native `fetch` helper and a Vite `/api` proxy. No Redux, React Query, or other state-management/data-fetching library was needed.
 
-Before submission, I will remove any tool names that I did not use and make sure I can explain every statement above.
-
-## Final Requirement Checklist
-
-Before submitting, verify the following:
-
-- [ ] `backend/src/TaskSorter.php` exists and contains `public function sortTasks(array $tasks): array`.
-- [ ] Sorting order is high > medium > low.
-- [ ] For equal priorities, older `created_at` values come first.
-- [ ] `backend/tests/TaskSorterTest.php` tests priority ordering, date-based secondary sorting, and an edge case.
-- [ ] The `tasks` migration exists with required fields and enum values.
-- [ ] `backend/app/Models/Task.php` has the correct `$fillable` fields.
-- [ ] API routes exist for GET, POST, PATCH complete, and DELETE tasks.
-- [ ] GET `/api/tasks` returns JSON with HTTP 200.
-- [ ] GET supports `?status=pending` and `?status=completed`.
-- [ ] GET returns HTTP 400 for an invalid status filter.
-- [ ] GET uses `TaskSorter` for ordering.
-- [ ] POST validates title, description, and priority correctly.
-- [ ] POST returns HTTP 201 on success and HTTP 400 on validation errors.
-- [ ] PATCH marks a task completed and returns HTTP 200.
-- [ ] PATCH returns HTTP 404 for a missing task.
-- [ ] DELETE removes a task and returns HTTP 200.
-- [ ] DELETE returns HTTP 404 for a missing task.
-- [ ] Frontend uses React, Vite, and Tailwind CSS.
-- [ ] Frontend form includes title, description, and priority.
-- [ ] Tasks display priority and status badges.
-- [ ] Complete and delete actions work without a full page reload.
-- [ ] Filters switch between All, Pending, and Completed without a reload.
-- [ ] Statistics display total, pending, and completed counts.
-- [ ] Frontend handles loading, empty, error, form submission, and action states.
-- [ ] README documents backend and frontend setup.
-- [ ] README documents API methods, paths, status codes, and request validation.
-- [ ] README explains how to run PHPUnit tests.
-- [ ] AI Disclosure accurately reflects the tools and assistance used.
-- [ ] PHP code follows PSR-12 style.
-- [ ] No unneeded authentication, repositories, services, or state-management libraries were added.
-- [ ] You can explain every important part of the submitted code.
 
 Final commands:
 
