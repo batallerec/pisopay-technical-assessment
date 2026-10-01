@@ -27,7 +27,7 @@ frontend/    React + Vite + Tailwind application
 - Tailwind CSS 4
 - Native browser `fetch`
 - shadcn-style UI components using Radix UI primitives
-- Node.js and npm
+- Node.js 20.19+ and npm 10+
 
 ## Features
 
@@ -110,6 +110,8 @@ npm run dev
 The Vite development server is normally available at `http://127.0.0.1:5173`.
 
 The frontend calls relative `/api/tasks` URLs. Vite proxies `/api` requests to `http://localhost:8000`, so the Laravel backend must be running while using the frontend.
+
+Commit `frontend/package-lock.json` and do not commit `frontend/node_modules/`. On a new device, run `npm install` from `frontend/` with optional dependencies and install scripts enabled. Do not use `--omit=optional` or `--ignore-scripts`; Vite's build tool uses platform-specific packages for Windows, macOS, and Linux.
 
 ## Running the Application
 
