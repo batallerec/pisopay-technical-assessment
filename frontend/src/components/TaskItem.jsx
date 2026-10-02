@@ -36,9 +36,9 @@ export default function TaskItem({ task, actionInProgress, onComplete, onDelete 
   const isBusy = Boolean(actionInProgress?.id === task.id);
 
   return (
-    <article className="rounded-2xl border border-[#dce4da] bg-white p-5 shadow-[0_10px_30px_rgba(38,61,47,0.05)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(38,61,47,0.09)]">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div className="min-w-0">
+    <article className="min-w-0 max-w-full overflow-hidden rounded-2xl border border-[#dce4da] bg-white p-4 shadow-[0_10px_30px_rgba(38,61,47,0.05)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(38,61,47,0.09)] sm:p-5">
+      <div className="flex min-w-0 flex-col gap-4 md:flex-row md:items-start md:justify-between">
+        <div className="min-w-0 max-w-full">
           <div className="mb-2 flex flex-wrap items-center gap-2">
             <span className={`rounded-full px-2.5 py-1 text-xs font-bold capitalize ${priorityStyles[task.priority] || priorityStyles.low}`}>
               {task.priority || 'unknown'} priority
@@ -49,14 +49,14 @@ export default function TaskItem({ task, actionInProgress, onComplete, onDelete 
               {task.status}
             </span>
           </div>
-          <h3 className={`break-words text-lg font-semibold ${task.status === 'completed' ? 'text-[#829087] line-through' : 'text-[#173c2e]'}`}>
+          <h3 className={`max-w-full [overflow-wrap:anywhere] text-lg font-semibold ${task.status === 'completed' ? 'text-[#829087] line-through' : 'text-[#173c2e]'}`}>
             {task.title}
           </h3>
-          {task.description && <p className="mt-2 whitespace-pre-wrap break-words text-sm leading-6 text-[#68776d]">{task.description}</p>}
+          {task.description && <p className="mt-2 max-w-full whitespace-pre-wrap [overflow-wrap:anywhere] text-sm leading-6 text-[#68776d]">{task.description}</p>}
           <p className="mt-4 text-xs font-medium text-[#8a968d]">Created {formatDate(task.created_at)}</p>
         </div>
 
-        <div className="flex shrink-0 gap-2 sm:flex-col">
+        <div className="flex shrink-0 gap-2 md:flex-col">
           {task.status === 'pending' && (
             <button
               type="button"

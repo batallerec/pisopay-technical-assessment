@@ -95,7 +95,7 @@ export default function App() {
         )}
 
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
-          <section className="order-2 space-y-5 lg:order-1">
+          <section className="order-2 min-w-0 space-y-5 lg:order-1">
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <p className="text-sm font-medium text-[#718077]">Your workspace</p>
@@ -119,7 +119,7 @@ export default function App() {
             )}
           </section>
 
-          <aside className="order-1 space-y-5 lg:sticky lg:top-6 lg:order-2 lg:self-start">
+          <aside className="order-1 min-w-0 space-y-5 lg:sticky lg:top-6 lg:order-2 lg:self-start">
             <TaskForm onTaskCreated={() => setRefreshKey((key) => key + 1)} />
             <TaskStats tasks={tasks} />
           </aside>

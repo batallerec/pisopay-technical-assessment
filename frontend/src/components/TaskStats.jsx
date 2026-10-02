@@ -13,7 +13,7 @@ export default function TaskStats({ tasks }) {
   const pendingTasks = tasks.filter((task) => task.status === 'pending').length;
 
   return (
-    <section className="grid grid-cols-1 gap-3 sm:grid-cols-3" aria-label="Task statistics">
+    <section className="grid grid-cols-1 gap-3 md:grid-cols-3" aria-label="Task statistics">
       <Stat label="Total tasks" value={tasks.length} accent="bg-[#173c2e]" />
       <Stat label="Pending" value={pendingTasks} accent="bg-[#ed9b3a]" />
       <Stat label="Completed" value={completedTasks} accent="bg-[#58a478]" />
