@@ -45,9 +45,15 @@ export default function App() {
 
     try {
       const updatedTask = await completeTask(taskId);
-      setTasks((currentTasks) => currentTasks.map((task) => (
-        task.id === taskId ? updatedTask : task
-      )));
+      setTasks((currentTasks) => {
+        if (filter === 'pending') {
+          return currentTasks.filter((task) => task.id !== taskId);
+        }
+
+        return currentTasks.map((task) => (
+          task.id === taskId ? updatedTask : task
+        ));
+      });
     } catch (requestError) {
       setError(requestError);
     } finally {
