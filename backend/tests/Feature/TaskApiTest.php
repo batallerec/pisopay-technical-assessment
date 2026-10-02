@@ -43,6 +43,23 @@ class TaskApiTest extends TestCase
             ->assertJsonValidationErrors(['title']);
     }
 
+    public function test_rejects_invalid_priority(): void
+    {
+        $this->postJson('/api/tasks', [
+            'title' => 'Invalid priority task',
+            'priority' => 'urgent',
+        ])
+            ->assertStatus(400)
+            ->assertJsonValidationErrors(['priority']);
+    }
+
+    public function test_rejects_invalid_status_filter(): void
+    {
+        $this->getJson('/api/tasks?status=archived')
+            ->assertStatus(400)
+            ->assertJson(['message' => 'Invalid status filter']);
+    }
+
     public function test_completes_task(): void
     {
         $task = Task::create(['title' => 'Finish API', 'status' => 'pending']);
